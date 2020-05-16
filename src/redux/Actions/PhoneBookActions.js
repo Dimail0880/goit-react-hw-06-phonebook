@@ -1,4 +1,3 @@
-// import { createAction } from "@reduxjs/toolkit";
 import { ADD_ITEM, DELETE_ITEM, FILTER_CONTACTS } from "../Types/index";
 
 export const addItem = (contact) => ({
@@ -10,7 +9,8 @@ export const deleteItem = (id) => ({
   type: DELETE_ITEM,
   payload: id,
 });
-export const filter = (query) => ({
+
+export const filterContacts = (event) => ({
   type: FILTER_CONTACTS,
-  payload: query,
+  payload: event.target.value,
 });
