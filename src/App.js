@@ -1,76 +1,13 @@
-import React, { Component } from "react";
-import Form from "./Components/Form/Form";
-import ContactsList from "./Components/ContactsList/ContactsList";
-import ContactsFilterForm from "./Components/ContactsFilter/ContactsFilterForm";
-import "react-toastify/dist/ReactToastify.css";
-import storage from "../src/helpers/storage";
-import { CSSTransition } from "react-transition-group";
-import slideTransition from "./animations/slide.module.css";
+import React from "react";
+import PhoneBookContainer from "./Components/PhoneBook/PhoneBookContainer";
 import "./App.css";
-import { connect } from "react-redux";
-import {
-  addItem,
-  deleteItem,
-  filterContacts,
-} from "./redux/Actions/PhoneBookActions";
 
-class App extends Component {
-  state = {};
-
-  componentDidMount() {
-    this.setState({ didMount: true });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    storage.save("contacts", this.props.contacts);
-  }
-
-  render() {
-    const { didMount } = this.state;
-    const { contacts, filter } = this.props;
-    const filteredContacts = contacts.filter((el) =>
-      el.name.toLowerCase().includes(filter.toLowerCase())
-    );
-    return (
-      <>
-        <CSSTransition
-          in={didMount}
-          classNames={slideTransition}
-          timeout={{ enter: 500, exit: 500 }}
-          mountOnEnter
-        >
-          <h2 className="title-phonebook">Phonebook</h2>
-        </CSSTransition>
-        <Form contacts={contacts} addItem={this.props.addItem} />
-        <h2>Contacts</h2>
-
-        <CSSTransition
-          in={contacts.length >= 2}
-          classNames={slideTransition}
-          timeout={{ enter: 500, exit: 500 }}
-          mountOnEnter
-          unmountOnExit
-        >
-          <ContactsFilterForm handleFilter={this.props.filterContacts} />
-        </CSSTransition>
-
-        <ContactsList
-          contactList={filteredContacts}
-          deleteContact={this.props.deleteItem}
-        />
-      </>
-    );
-  }
-}
-const mapStateToProps = (state, props) => ({
-  contacts: state.contacts,
-  filter: state.filter,
-});
-
-const mapDispatchToProps = {
-  addItem,
-  deleteItem,
-  filterContacts,
+const App = () => {
+  return (
+    <>
+      <PhoneBookContainer />
+    </>
+  );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
