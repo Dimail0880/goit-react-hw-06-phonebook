@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Form from "../Form/Form";
+// import Form from "../Form/Form";
+import FormFormik from "../Form/FormFormik";
+
 import ContactsList from "../ContactsList/ContactsList";
 import ContactsFilterForm from "../ContactsFilter/ContactsFilterForm";
 import "react-toastify/dist/ReactToastify.css";
@@ -34,7 +36,8 @@ class PhoneBook extends Component {
         >
           <h2 className="title-phonebook">Phonebook</h2>
         </CSSTransition>
-        <Form contacts={contacts} addItem={this.props.addItem} />
+        {/* <Form contacts={contacts} addItem={this.props.addItem} /> */}
+        <FormFormik contacts={contacts} addItem={this.props.addItem} />
         <h2>Contacts</h2>
 
         <CSSTransition
