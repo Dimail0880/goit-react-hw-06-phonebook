@@ -33,6 +33,7 @@
 
 .input:focus {
   border: 1px solid rgb(186, 204, 253);
+  box-shadow: none;
 }
 
 .button {
@@ -55,13 +56,7 @@
   transition: all linear 300ms;
 }
 .errorMessage {
-  margin: 0 auto;
-  position: absolute;
-  bottom: 200px;
-  width: 300px;
-  height: auto;
-  color: aliceblue;
-  background-color: rgb(255, 45, 45);
+  color: rgb(216, 67, 67);
   padding: 5px;
   border-radius: 3px;
 }
